@@ -21,7 +21,9 @@
         }
 
         .clock{
-            font-size: 140px;
+            font-size: 120px;
+            border: 1px solid red;
+            padding: 15px;
         }
     </style>
 </head>
@@ -36,10 +38,24 @@
             let d = new Date();
 
             let h = d.getHours();
+
+            let ampm = h>=12 ? "PM" : "AM";
+
+            h = h % 12;
+
+            h = h == 0 ? 12 : h;
+
             let m = d.getMinutes();
+
+            m = m > 9 ? m : "0" + m;
+
             let s = d.getSeconds();
 
-            return `${h} : ${m} : ${s}`;
+            s = s > 9 ? s : "0" + s;
+
+            return `${h} : ${m} : ${s} : ${ampm}`;
+
+            // return d.toLocaleTimeString();
         };
 
          setInterval(() => {
