@@ -13,7 +13,7 @@ function addNewWEField() {
     weOb.insertBefore(newNode, weAddButtonOb);
 };
 
-function addNewQAField(){
+function addNewQAField() {
     let newNode = document.createElement("textArea");
     newNode.classList.add("form-control");
     newNode.classList.add("aqField");
@@ -25,4 +25,72 @@ function addNewQAField(){
     let aqAddButtonOb = document.getElementById("aqAddButton");
 
     aqOb.insertBefore(newNode, aqAddButtonOb);
+};
+
+function generateCV() {
+
+    console.log("Start");
+    let nameField = document.getElementById("nameField").value;
+
+    let nameT1 = document.getElementById("nameT1");
+
+    nameT1.innerHTML = nameField;
+
+    //direct
+
+    document.getElementById('nameT2').innerHTML = nameField;
+
+    //contact
+    document.getElementById("contactT").innerHTML =
+        document.getElementById("contactField").value;
+
+    //address
+    document.getElementById("addressT").innerHTML =
+        document.getElementById("addressField").value;
+
+    //link
+    document.getElementById("linkT").href =
+        document.getElementById("linkField").value;
+
+    document.getElementById("gitT").href =
+        document.getElementById("gitField").value;
+
+    document.getElementById("naukriT").href =
+        document.getElementById("naukriField").value;
+
+    //objective
+    document.getElementById("obT").innerHTML =
+        document.getElementById("obField").value;
+
+    //work experience
+    let wes = document.getElementsByClassName("weField");
+
+    let str = ""
+
+    for (let e of wes) {
+        str = str + `<li> ${e.value} </li>`;
+    }
+
+    document.getElementById("weT").innerHTML = str;
+
+    //academic qualification
+    let aqs = document.getElementsByClassName("aqField");
+
+    let str1 = ""
+
+    for (let e of aqs) {
+        str1 = str1 + `<li> ${e.value} </li>`;
+    }
+
+    document.getElementById("aqT").innerHTML = str1;
+
+    // Hide form and show template
+    document.getElementById("cv-form").style.display = "none";
+    document.getElementById("cv-template").style.display = "block";
+
+    console.log("cv generated");
+};
+
+function printCV() {
+    window.print();
 };
